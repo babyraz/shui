@@ -1,4 +1,4 @@
-import { DynamoDBClient, PutItemCommand, QueryCommand, UpdateItemCommand} from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, PutItemCommand} from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -29,12 +29,11 @@ export const handler = async (event) => {
             Item: note
         }))
 
-
         return {
             statusCode: 200,
             body: JSON.stringify({
-                message: `Note created: ${note}`
-                
+                message: "Note created",
+                note: note
             })
         }
 

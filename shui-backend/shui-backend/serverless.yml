@@ -18,16 +18,16 @@ functions:
     events:
       - httpApi:
           path: /get
-          method: get
+          method: GET
   postNote:
     handler: functions/postNote/index.handler
     events:
       - httpApi:
           path: /post
-          method: post
+          method: POST
   changeNote:
     handler: functions/changeNote/index.handler
     events:
       - httpApi:
-          path: /put
-          method: put
+          path: /{id}
+          method: PUT
