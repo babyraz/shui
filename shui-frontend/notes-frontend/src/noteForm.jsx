@@ -1,12 +1,14 @@
 import { useState } from "react";
-
+import { createNote } from "./api.js"
+ 
 export default function NoteForm({ onSubmit, defaultText = "" }) {
   const [username, setUsername] = useState("");
   const [text, setText] = useState(defaultText);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit(username, text);
+    const newNote = await createNote(username, text);
+    onSubmit(newNote);
     setUsername("");
     setText("");
   };

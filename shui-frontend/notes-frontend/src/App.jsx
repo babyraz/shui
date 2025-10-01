@@ -16,9 +16,8 @@ export default function App() {
     fetchNotes();
   }, []);
 
-  const handleCreate = async (username, text) => {
-    const newNote = await createNote(username, text);
-    fetchNotes();
+  const handleCreate = (newNote) => {
+    setNotes((prevNotes) => [...prevNotes, newNote])
   };
 
   const handleUpdate = async (id) => {
