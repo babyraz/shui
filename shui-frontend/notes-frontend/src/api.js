@@ -1,24 +1,33 @@
-const BASE_URL = "https://your-api-id.execute-api.eu-north-1.amazonaws.com";
+// const BASE_URL = "https://qw3x1650ve.execute-api.eu-north-1.amazonaws.com";
 
 export const getNotes = async () => {
-  const res = await fetch(`${BASE_URL}/get`);
-  return res.json();
-};
+    const res = await fetch("https://qw3x1650ve.execute-api.eu-north-1.amazonaws.com/get");
+    const data = await res.json();
+    return data.notes; // return only the array
+  };
 
 export const createNote = async (username, text) => {
-  const res = await fetch(`${BASE_URL}/create`, {
+  const res = await fetch(`https://qw3x1650ve.execute-api.eu-north-1.amazonaws.com/post`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, text })
   });
   return res.json();
 };
-
 export const updateNote = async (id, text) => {
-  const res = await fetch(`${BASE_URL}/${id}`, {
+  const res = await fetch(`https://qw3x1650ve.execute-api.eu-north-1.amazonaws.com/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text })
   });
   return res.json();
 };
+
+// export const updateNote = async (id, text) => {
+//   const res = await fetch(`${BASE_URL}/${id}`, {
+//     method: "PUT",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ text })
+//   });
+//   return res.json();
+// };
