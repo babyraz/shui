@@ -1,3 +1,4 @@
+import './App.css';
 import { useEffect, useState } from "react";
 import { getNotes, createNote, updateNote } from "./api";
 import NoteForm from "./noteForm";

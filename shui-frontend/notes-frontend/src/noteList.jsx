@@ -3,20 +3,25 @@ export default function NoteList({ notes, onUpdate }) {
 
   
 
+
   return (
-    <div>
-      <h2>Alla anteckningar</h2>
+    <div className="note-list">
+      <h2 style={{ color: "white" }}>All notes</h2>
       {notes.map((note) => (
-        <div key={note.id + note.createdAt}>
-          <strong>{note.username}</strong>: {note.text}
-          <br />
-          <small>{new Date(note.createdAt).toLocaleString()}</small>
-          <br />
-          <button onClick={() => onUpdate(note.id)}>Edit</button>
-          <hr />
+        <div className="note-card" key={note.id}>
+          <div className="note-content">
+            <p>{note.text}</p>
+          </div>
+          <span className="note-user">— {note.username}</span>
+          <div className="note-meta">
+            <small>{new Date(note.createdAt).toLocaleString()}</small>
+            <button className="edit-btn" onClick={() => onUpdate(note.id)}>
+              Edit
+            </button>
+          </div>
+          <div className="note-arrow"></div>
         </div>
       ))}
     </div>
   );
 }
-

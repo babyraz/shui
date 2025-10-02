@@ -40,3 +40,104 @@
 .read-the-docs {
   color: #888;
 }
+
+.note-list {
+  background: #0a1a3a; /* dark blue page background */
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.note-card {
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.note-content p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.note-user {
+  font-weight: bold;
+  display: block;
+  margin-top: 8px;
+}
+
+.note-meta {
+  font-size: 0.8rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #c92a3a;
+}
+
+/* little arrow like in your screenshot */
+.note-arrow {
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* space between fields */
+  margin-bottom: 20px;
+}
+
+.note-form input,
+.note-form textarea {
+  width: 100%; /* full width of the form container */
+  padding: 10px 12px; /* add some inner spacing */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box; /* ensures padding doesn’t break width */
+  background: #fff; /* white background */
+  color: #000; /* black text */
+  resize: vertical; /* only allow vertical resize for textarea */
+}
+
+.note-form textarea {
+  min-height: 80px; /* taller for note content */
+}
+
+.note-form button {
+  align-self: flex-start; /* button stays to the left */
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #1d4ed8;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.note-form button:hover {
+  background: #2563eb;
+}

@@ -21,21 +21,19 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
   
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="note-form" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Username"
+        placeholder="Your name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        required
       />
       <textarea
-        placeholder="Note text"
+        placeholder="Write your note..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        required
       />
-      <button type="submit">Save Note</button>
+      <button type="submit">Add Note</button>
     </form>
   );
 }
