@@ -9,16 +9,26 @@ export default function App() {
 
   const fetchNotes = async () => {
     const data = await getNotes();
-    setNotes(data);
+    const sorted = data.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    setNotes(sorted);
   };
+  
 
   useEffect(() => {
     fetchNotes();
   }, []);
 
-  const handleCreate = (newNote) => {
-    setNotes((prevNotes) => [...prevNotes, newNote])
+  // const handleCreate = (newNote) => {
+  //   setNotes((prevNotes) => [...prevNotes, newNote])
+  // };
+
+  const handleCreate = async (username, text) => {
+    await createNote(username, text); 
+    fetchNotes(); // reload with correct data
   };
+  
 
   const handleUpdate = async (id) => {
     const newText = prompt("Enter new text:");
