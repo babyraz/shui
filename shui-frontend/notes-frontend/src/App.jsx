@@ -53,9 +53,9 @@ export default function App() {
   return (
     <div>
       <h1>Family notes</h1>
-      <button onClick={() => setShowForm(true)}>Add Note</button>
+      <button className="btn btn-red" onClick={() => setShowForm(true)}>Add Note</button>
 
-      {/* Modal */}
+ 
       {showForm && (
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

@@ -9,20 +9,6 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // if (!username.trim() || !text.trim()) {
-    //   alert("Both fields are required.");
-    //   return;
-    // }
-  
-    // if (username.length > 30) {
-    //   alert("Username must be under 30 characters.");
-    //   return;
-    // }
-  
-    // if (text.length > 500) {
-    //   alert("Message must be under 500 characters.");
-    //   return;
-    // }
 
     const trimmedUsername = username.trim()
     const trimmedText = username.trim()
