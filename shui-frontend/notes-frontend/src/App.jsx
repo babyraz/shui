@@ -25,12 +25,6 @@ export default function App() {
     setShowForm(false); // close modal after submit
   };
 
-  // const handleUpdate = async (id) => {
-  //   const newText = prompt("Enter new text:");
-  //   if (!newText) return;
-  //   await updateNote(id, newText);
-  //   fetchNotes();
-  // };
 
   const startEditing = (note) => {
     setEditingId(note.id);

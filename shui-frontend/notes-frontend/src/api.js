@@ -1,5 +1,3 @@
-
-
 export const getNotes = async () => {
     const res = await fetch("https://qw3x1650ve.execute-api.eu-north-1.amazonaws.com/get");
     const data = await res.json();

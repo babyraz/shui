@@ -42,7 +42,7 @@
 }
 
 .note-list {
-  background: #0a1a3a; /* dark blue page background */
+  background: #0a1a3a;
   min-height: 100vh;
   padding: 20px;
 }
@@ -187,7 +187,7 @@
   margin-right: 8px;
 }
 
-/* Red buttons (Edit, Save) */
+
 .btn-red {
   background: #e63946;
   color: white;
@@ -207,6 +207,13 @@
   background: #bbb;
 }
 
+.note-card.editing {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+}
+
+
 .note-edit-textarea {
   width: 100%;
   min-height: 80px;
@@ -216,6 +223,7 @@
   border: 1px solid #ccc;
   margin-bottom: 8px;
   font-family: inherit;
+  box-sizing: border-box;
   background: #fff;
   color: #000;   
 }
