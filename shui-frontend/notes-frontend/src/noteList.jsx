@@ -1,27 +1,36 @@
-export default function NoteList({ notes, onUpdate }) {
+export default function NoteList({ notes, onStartEdit, onSaveEdit, onCancelEdit, editingId, editingText, setEditingText }) {
   if (!notes || notes.length === 0) return <p>Inga anteckningar än.</p>;
+
 
   
 
 
-  return (
-    <div className="note-list">
-      <h2 style={{ color: "white" }}>All notes</h2>
-      {notes.map((note) => (
-        <div className="note-card" key={note.id}>
-          <div className="note-content">
-            <p>{note.text}</p>
+    return (
+      <div>
+        <h2>Alla anteckningar</h2>
+        {notes.map((note) => (
+          <div key={note.id} className="note-card">
+            {editingId === note.id ? (
+              <>
+                <textarea
+                  value={editingText}
+                  onChange={(e) => setEditingText(e.target.value)}
+                />
+                <button className="btn btn-red" onClick={() => onSaveEdit(note.id)}>Save</button>
+                <button className="btn btn-red" onClick={onCancelEdit}>Cancel</button>
+              </>
+            ) : (
+              <>
+                <strong>{note.username}</strong>: {note.text}
+                <br />
+                <small>{new Date(note.createdAt).toLocaleString()}</small>
+                <br />
+                <button className="btn btn-red" onClick={() => onStartEdit(note)}>Edit</button>
+              </>
+            )}
           </div>
-          <span className="note-user">— {note.username}</span>
-          <div className="note-meta">
-            <small>{new Date(note.createdAt).toLocaleString()}</small>
-            <button className="edit-btn" onClick={() => onUpdate(note.id)}>
-              Edit
-            </button>
-          </div>
-          <div className="note-arrow"></div>
-        </div>
-      ))}
-    </div>
-  );
-}
+        ))}
+      </div>
+    );
+  }
+  

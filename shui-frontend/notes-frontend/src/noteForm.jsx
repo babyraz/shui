@@ -5,35 +5,52 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
   const [username, setUsername] = useState("");
   const [text, setText] = useState(defaultText);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const newNote = await createNote(username, text);
-  //   onSubmit(newNote);
-  //   setUsername("");
-  //   setText("");
-  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await onSubmit(username, text); // pass raw inputs to parent
+
+    // if (!username.trim() || !text.trim()) {
+    //   alert("Both fields are required.");
+    //   return;
+    // }
+  
+    // if (username.length > 30) {
+    //   alert("Username must be under 30 characters.");
+    //   return;
+    // }
+  
+    // if (text.length > 500) {
+    //   alert("Message must be under 500 characters.");
+    //   return;
+    // }
+
+    const trimmedUsername = username.trim()
+    const trimmedText = username.trim()
+
+    await onSubmit(trimmedUsername, trimmedText); // pass raw inputs to parent
     setUsername("");
     setText("");
   };
   
 
   return (
-    <form className="note-form" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="note-form">
       <input
         type="text"
-        placeholder="Your name"
+        placeholder="Namn"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        required
+        maxLength={30}
       />
       <textarea
         placeholder="Write your note..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        required
+        maxLength={500}
       />
-      <button type="submit">Add Note</button>
+      <button type="submit">Skicka</button>
     </form>
   );
 }

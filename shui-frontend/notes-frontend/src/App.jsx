@@ -1,48 +1,79 @@
-import './App.css';
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { getNotes, createNote, updateNote } from "./api";
 import NoteForm from "./noteForm";
 import NoteList from "./NoteList";
+import './App.css';
 
 export default function App() {
   const [notes, setNotes] = useState([]);
   const [editingId, setEditingId] = useState(null);
+  const [editingText, setEditingText] = useState("");
+  const [showForm, setShowForm] = useState(false); 
 
   const fetchNotes = async () => {
     const data = await getNotes();
-    const sorted = data.sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
-    setNotes(sorted);
+    setNotes(data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
   };
-  
 
   useEffect(() => {
     fetchNotes();
   }, []);
 
-  // const handleCreate = (newNote) => {
-  //   setNotes((prevNotes) => [...prevNotes, newNote])
+  const handleCreate = async (username, text) => {
+    await createNote(username, text);
+    fetchNotes();
+    setShowForm(false); // close modal after submit
+  };
+
+  // const handleUpdate = async (id) => {
+  //   const newText = prompt("Enter new text:");
+  //   if (!newText) return;
+  //   await updateNote(id, newText);
+  //   fetchNotes();
   // };
 
-  const handleCreate = async (username, text) => {
-    await createNote(username, text); 
-    fetchNotes(); // reload with correct data
+  const startEditing = (note) => {
+    setEditingId(note.id);
+    setEditingText(note.text);
+  };
+  
+  const saveUpdate = async (id) => {
+    await updateNote(id, editingText);
+    setEditingId(null);
+    setEditingText("");
+    fetchNotes();
+  };
+  
+  const cancelEdit = () => {
+    setEditingId(null);
+    setEditingText("");
   };
   
 
-  const handleUpdate = async (id) => {
-    const newText = prompt("Enter new text:");
-    if (!newText) return;
-    await updateNote(id, newText);
-    fetchNotes();
-  };
-
   return (
     <div>
-      <h1>Notes</h1>
-      <NoteForm onSubmit={handleCreate} />
-      <NoteList notes={notes} onUpdate={handleUpdate} />
+      <h1>Family notes</h1>
+      <button onClick={() => setShowForm(true)}>Add Note</button>
+
+      {/* Modal */}
+      {showForm && (
+        <div className="modal-overlay" onClick={() => setShowForm(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowForm(false)}>×</button>
+            <NoteForm onSubmit={handleCreate} />
+          </div>
+        </div>
+      )}
+
+        <NoteList
+          notes={notes}
+          onStartEdit={startEditing}
+          onSaveEdit={saveUpdate}
+          onCancelEdit={cancelEdit}
+          editingId={editingId}
+          editingText={editingText}
+          setEditingText={setEditingText}
+        />
     </div>
   );
 }
