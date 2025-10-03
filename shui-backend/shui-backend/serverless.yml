@@ -1,0 +1,33 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: frontend24
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: shui-backend
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::914215748462:role/acessrole
+  httpApi:
+    cors: true
+
+functions:
+  getNotes:
+    handler: functions/getNotes/index.handler
+    events:
+      - httpApi:
+          path: /get
+          method: GET
+  postNote:
+    handler: functions/postNote/index.handler
+    events:
+      - httpApi:
+          path: /post
+          method: POST
+  changeNote:
+    handler: functions/changeNote/index.handler
+    events:
+      - httpApi:
+          path: /{id}
+          method: PUT
