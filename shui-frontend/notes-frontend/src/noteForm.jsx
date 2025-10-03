@@ -11,9 +11,9 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
 
 
     const trimmedUsername = username.trim()
-    const trimmedText = username.trim()
+    const trimmedText = text.trim()
 
-    await onSubmit(trimmedUsername, trimmedText); // pass raw inputs to parent
+    await onSubmit(trimmedUsername, trimmedText);
     setUsername("");
     setText("");
   };
@@ -23,7 +23,7 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
     <form onSubmit={handleSubmit} className="note-form">
       <input
         type="text"
-        placeholder="Namn"
+        placeholder="Name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
@@ -36,7 +36,7 @@ export default function NoteForm({ onSubmit, defaultText = "" }) {
         required
         maxLength={500}
       />
-      <button type="submit">Skicka</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
