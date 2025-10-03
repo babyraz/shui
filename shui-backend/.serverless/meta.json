@@ -1,0 +1,17 @@
+{
+  "unknown": {
+    "versionFramework": "4.19.1",
+    "error": {
+      "message": "Cannot parse \"serverless.yml\": bad indentation of a mapping entry in \"/Users/rasmus/shui/shui-backend/shui-backend/serverless.yml\" (27:27)\n\n 24 |           path: /post\n 25 |           method: post\n 26 |   changeNote:\n 27 |     handler: index.handler:\n--------------------------------^\n 28 |     events:\n 29 |       - httpApi:",
+      "stack": "ServerlessError2: Cannot parse \"serverless.yml\": bad indentation of a mapping entry in \"/Users/rasmus/shui/shui-backend/shui-backend/serverless.yml\" (27:27)\n\n 24 |           path: /post\n 25 |           method: post\n 26 |   changeNote:\n 27 |     handler: index.handler:\n--------------------------------^\n 28 |     events:\n 29 |       - httpApi:\n    at parseConfigurationFile (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:707:3862)\n    at async read_default (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:707:5237)\n    at async routeNew (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:716:625)\n    at async commandOnboarding (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:714:20213)\n    at async _CoreRunner.run (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:1028:6301)\n    at async route (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:1508:2878)\n    at async Object.run (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:1509:3661)\n    at async run2 (file:///Users/rasmus/.serverless/releases/4.19.1/package/dist/sf-core.js:1509:4815)",
+      "code": "CONFIGURATION_PARSE_ERROR"
+    },
+    "command": [],
+    "options": {},
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
